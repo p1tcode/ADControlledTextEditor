@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.DirectoryService.AccountManagment;
 
 namespace TextEditor
 {
@@ -23,6 +24,30 @@ namespace TextEditor
         public MainWindow()
         {
             InitializeComponent();
+            Domain();
+        }
+
+        private void Domain()
+        {
+            using (PrincipalContext ctx)
+            {
+
+            }
+        }
+
+        private void OpenCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Console.WriteLine($"Open");
+        }
+
+        private void SaveCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Console.WriteLine($"Save");
+        }
+
+        private void ExitCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

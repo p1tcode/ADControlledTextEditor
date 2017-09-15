@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TextEditor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="768" Width="1024">
+    <Window.CommandBindings>
+        <CommandBinding Command="local:CustomCommands.Open" Executed="OpenCommand_Executed" />
+        <CommandBinding Command="local:CustomCommands.Save" Executed="SaveCommand_Executed" />
+        <CommandBinding Command="local:CustomCommands.Exit" Executed="ExitCommand_Executed" />
+
+    </Window.CommandBindings>
     <Grid>
-        
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Command="local:CustomCommands.Open" />
+                    <MenuItem Command="local:CustomCommands.Save" />
+                    <Separator />
+                    <MenuItem Command="local:CustomCommands.Exit" />
+                </MenuItem>
+            </Menu>
+            <TextBox x:Name="txtEditor" Padding="2" FontSize="14" AcceptsReturn="True" AcceptsTab="True" AllowDrop="False" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+        </DockPanel>
     </Grid>
 </Window>
