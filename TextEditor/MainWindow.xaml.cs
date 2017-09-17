@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.DirectoryService.AccountManagment;
+
+
 
 namespace TextEditor
 {
@@ -21,19 +22,22 @@ namespace TextEditor
     /// </summary>
     public partial class MainWindow : Window
     {
+        ActiveDirectoryInfo adInfo = new ActiveDirectoryInfo();
+        FilesData filesData = new FilesData();
+
+        List<string> filesList = new List<string>();
+
         public MainWindow()
         {
             InitializeComponent();
-            Domain();
-        }
 
-        private void Domain()
-        {
-            using (PrincipalContext ctx)
+            filesData.PopulateFilesList(adInfo.GetNotesFromCurrentUserGroups());
+            foreach (KeyValuePair<string, string> data in filesData.FilesList)
             {
-
+                Console.WriteLine($"Name: { data.Key } - Path: { data.Value }");
             }
         }
+
 
         private void OpenCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
