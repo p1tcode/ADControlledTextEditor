@@ -65,7 +65,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CustomCommands.cs" />
-    <Compile Include="ActiveDirectoryInfo.cs" />
+    <Compile Include="ActiveDirectoryData.cs" />
+    <Compile Include="LogFile.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

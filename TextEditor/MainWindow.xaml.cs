@@ -22,20 +22,30 @@ namespace TextEditor
     /// </summary>
     public partial class MainWindow : Window
     {
-        ActiveDirectoryInfo adInfo = new ActiveDirectoryInfo();
-        FilesData filesData = new FilesData();
+        ActiveDirectoryData adInfo;
+        FilesData filesData;
 
         List<string> filesList = new List<string>();
-
+        
         public MainWindow()
         {
             InitializeComponent();
 
-            filesData.PopulateFilesList(adInfo.GetNotesFromCurrentUserGroups());
+            LogFile.Initialize("ADCT_Log.txt");
+
+            adInfo = new ActiveDirectoryData();
+            LogFile.WriteLine($"UserName: { adInfo.UserName }");
+            LogFile.Seperator();
+
+            filesData = new FilesData();
+
+            filesData.PopulateFilesList(adInfo.GetNotesFromCurrentUserGroups(adInfo.GetCurrentUserGroups()));
             foreach (KeyValuePair<string, string> data in filesData.FilesList)
             {
-                Console.WriteLine($"Name: { data.Key } - Path: { data.Value }");
+                LogFile.WriteLine($"Name: { data.Key } - Path: { data.Value }");
             }
+
+            this.Close();
         }
 
 
