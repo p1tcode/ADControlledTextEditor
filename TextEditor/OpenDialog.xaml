@@ -1,0 +1,29 @@
+﻿<Window x:Name="wpfOpen" x:Class="TextEditor.OpenDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TextEditor"
+        mc:Ignorable="d"
+        Title="Open File" Height="480" Width="720">
+    <Grid IsManipulationEnabled="True" Margin="2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="32" />
+        </Grid.RowDefinitions>
+
+        <ListView x:Name="lvFiles" Grid.Row="0" SelectionMode="Single">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding FileName}" />
+                    <GridViewColumn Header="Path" DisplayMemberBinding="{Binding Path}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <WrapPanel Grid.Row="1" HorizontalAlignment="Right">
+            <Button x:Name="btnOpen" Width="86" Height="22" Margin="5" Content="_Open" Click="BtnOpen_Click" />
+            <Button x:Name="btnCancel" Width="86" Height="22" Margin="0, 0, 5, 0" Content="_Cancel" Click="BtnCancel_Click" />
+        </WrapPanel>
+    </Grid>
+</Window>

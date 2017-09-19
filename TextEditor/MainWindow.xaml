@@ -1,11 +1,11 @@
-﻿<Window x:Class="TextEditor.MainWindow"
+﻿<Window x:Name="wpfMain" x:Class="TextEditor.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TextEditor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="768" Width="1024">
+        Title="ADC Text Editor" Height="768" Width="1024">
     <Window.CommandBindings>
         <CommandBinding Command="local:CustomCommands.Open" Executed="OpenCommand_Executed" />
         <CommandBinding Command="local:CustomCommands.Save" Executed="SaveCommand_Executed" />
@@ -22,7 +22,7 @@
                     <MenuItem Command="local:CustomCommands.Exit" />
                 </MenuItem>
             </Menu>
-            <TextBox x:Name="txtEditor" Padding="2" FontSize="14" AcceptsReturn="True" AcceptsTab="True" AllowDrop="False" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+            <TextBox x:Name="txtEditor" x:FieldModifier="public" Padding="2" FontSize="14" AcceptsReturn="True" AcceptsTab="True" AllowDrop="False" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" IsReadOnly="True" IsUndoEnabled="False"/>
         </DockPanel>
     </Grid>
 </Window>
