@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Security.Principal;
 using System.DirectoryServices;
 using System.DirectoryServices.AccountManagement;
+using System.IO;
 
 namespace TextEditor
 {
@@ -167,12 +168,18 @@ namespace TextEditor
                     {
                         if (parts[0] == fileMask)
                         {
-                            files.Add(new FileInfo() { FileName = parts[1], Path = parts[2], GroupOwnerName = group.Name });
-                            LogFile.WriteLine($"Adding file: { parts[1] } , {parts[2] } from Group: { group.Name }");
+                            if (File.Exists(parts[2]))
+                            {
+                                files.Add(new FileInfo() { Name = parts[1], Path = parts[2], GroupOwnerName = group.Name });
+                                LogFile.WriteLine($"Adding file: { parts[1] } , {parts[2] } from Group: { group.Name }");
+                            }
+                            else
+                            {
+                                LogFile.WriteLine($"Error adding file: { parts[1] } , {parts[2] } from Group: { group.Name }! The file was not found on this system!");
+                            }
                         }
                     }
                 }
-                
             }
         }
     }

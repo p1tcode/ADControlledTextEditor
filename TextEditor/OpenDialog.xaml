@@ -5,17 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TextEditor"
         mc:Ignorable="d"
-        Title="Open File" Height="480" Width="720">
+        Title="Open File" Height="480" Width="720" Icon="Icons/Upload.ico">
     <Grid IsManipulationEnabled="True" Margin="2">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="32" />
         </Grid.RowDefinitions>
 
-        <ListView x:Name="lvFiles" Grid.Row="0" SelectionMode="Single">
+        <ListView x:Name="lvFiles" Grid.Row="0" SelectionMode="Single" MouseDoubleClick="LvFiles_MouseDoubleClick">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding FileName}" />
+                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Name}" />
                     <GridViewColumn Header="Path" DisplayMemberBinding="{Binding Path}" />
                 </GridView>
             </ListView.View>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TextEditor"
         mc:Ignorable="d"
-        Title="ADC Text Editor" Height="768" Width="1024">
+        Title="ADC Text Editor" Height="768" Width="1024" Closing="WpfMain_Closing">
     <Window.CommandBindings>
         <CommandBinding Command="local:CustomCommands.Open" Executed="OpenCommand_Executed" />
         <CommandBinding Command="local:CustomCommands.Save" Executed="SaveCommand_Executed" />
@@ -16,13 +16,25 @@
         <DockPanel>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
-                    <MenuItem Command="local:CustomCommands.Open" />
-                    <MenuItem Command="local:CustomCommands.Save" />
+                    <MenuItem Command="local:CustomCommands.Open">
+                        <MenuItem.Icon>
+                            <Image Source="/Icons/Upload.ico" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="local:CustomCommands.Save">
+                        <MenuItem.Icon>
+                            <Image Source="/Icons/Download.ico" />
+                        </MenuItem.Icon>
+                    </MenuItem>
                     <Separator />
-                    <MenuItem Command="local:CustomCommands.Exit" />
+                    <MenuItem Command="local:CustomCommands.Exit">
+                        <MenuItem.Icon>
+                            <Image Source="/Icons/Log Out.ico" />
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
             </Menu>
-            <TextBox x:Name="txtEditor" x:FieldModifier="public" Padding="2" FontSize="14" AcceptsReturn="True" AcceptsTab="True" AllowDrop="False" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" IsReadOnly="True" IsUndoEnabled="False"/>
+            <TextBox x:Name="txtEditor" x:FieldModifier="public" Padding="2" FontSize="14" AcceptsReturn="True" AcceptsTab="True" AllowDrop="False" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" IsUndoEnabled="True" Margin="2" IsEnabled="False"/>
         </DockPanel>
     </Grid>
 </Window>

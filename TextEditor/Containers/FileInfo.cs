@@ -9,13 +9,13 @@ namespace TextEditor
     public class FileInfo
     {
         public string GroupOwnerName { get; set; }
-        public string FileName { get; set; }
+        public string Name { get; set; }
         public string Path { get; set; }
 
         public FileInfo()
         {
             GroupOwnerName = "";
-            FileName = "";
+            Name = "";
             Path = "";
         }
     }
